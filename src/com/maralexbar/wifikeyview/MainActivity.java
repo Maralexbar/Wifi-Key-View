@@ -32,7 +32,7 @@ public class MainActivity extends Activity {
 		error=getResources().getString(R.string.error);
 		//RunAsRoot("busybox cp /data/misc/wifi/wpa_supplicant.conf /sdcard/wpa_supplicant.conf");
 		String aa;
-		aa=RunAsRoot("su -c cat /data/misc/wifi/wpa_supplicant.conf |busybox grep -E \"key_mgmt|ssid|psk\""); 
+		aa=RunAsRoot("su -c cat /data/misc/wifi/wpa_supplicant.conf | busybox grep -E \"key_mgmt|ssid|psk\""); 
 		aa=aa.replace("\t", "<br>");
 		aa=aa.replace("key_mgmt=NONE", "<font color=00ff00>"+type+": "+open+"</font><hr>");
 		aa=aa.replace("key_mgmt=WPA-PSK", "<font color=ff0000>"+type+": "+"WPA-PSK</font><hr>");
@@ -44,11 +44,7 @@ public class MainActivity extends Activity {
 						
 	}
 
-	private String RunAsRoot(String cmd){
-       
-		
-			
-	
+	private String RunAsRoot(String cmd) {
 		try {
 		    // Executes the command.
 		    Process process = Runtime.getRuntime().exec(cmd);
@@ -57,40 +53,28 @@ public class MainActivity extends Activity {
 		    // NOTE: You can write to stdin of the command using
 		    //       process.getOutputStream().
 		    BufferedReader reader = new BufferedReader(
-		    new InputStreamReader(process.getInputStream()));
+			new InputStreamReader(process.getInputStream()));
 		    int read;
 		    String aa="";
 		    id=0;
 		    char[] buffer = new char[4096];
 		    StringBuffer output = new StringBuffer();
 		    while ((read = reader.read(buffer)) > 0) {
-		        output.append(buffer,0,read);
-		        aa=aa+output.toString();
-		        id=id+1;
-		        	        
+		        output.append(buffer, 0, read);
+		        aa += output.toString();
+		        ++id;
 		    }
 		    reader.close();
 		    
 		    // Waits for the command to finish.
 		    process.waitFor();
 		    
-		    if (id == 0) {
-		    	ret=error+"<hr>";
-			} else {
-				ret=aa;
-			}
-		    
-		    
-		    
+		    ret = id == 0 ? error+"<hr>" : aa;
 		} catch (IOException e) {
-			
 		    throw new RuntimeException(e);
 		} catch (InterruptedException e) {
 		    throw new RuntimeException(e);
 		}
 		return ret;
-		
-		
-}
-	
+	}
 }
