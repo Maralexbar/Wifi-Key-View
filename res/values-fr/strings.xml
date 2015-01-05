@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Voir clés WiFi</string>
+    <string name="backup">Sauvegarder</string>
+    <string name="restore">Restaurer</string>
+    <string name="ssid">Nom</string>
+    <string name="pwd">Pass.</string>
+    <string name="type">Type</string>
+    <string name="open">Ouvrir</string>
+    <string name="error">Erreur : les droits root/SuperUser sont nécessaires ainsi que des binaires BusyBox</string>
+</resources>
