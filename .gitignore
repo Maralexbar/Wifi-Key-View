@@ -1,0 +1,28 @@
+# Generated directories
+bin/
+doc/
+documentation/
+
+# Generated files
+*.class
+*.deb
+*.rpm
+*.apk
+*.exe
+*.msi
+*.dmg
+
+# Temp files
+*~
+*.bak
+\#*
+.\#*
+
+# Archives
+*.tar*
+*.zip
+*.7z
+
+# OS specific useless files
+thumbs.db
+Thumbs.db
