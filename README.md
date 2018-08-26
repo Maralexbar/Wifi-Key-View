@@ -1,5 +1,7 @@
-Wifi-Key-View
+Wifi-Key-View [CLOSED]
 =============
+
+This project was closed
 
 View your Wi-Fi saved passwords on Android.
 It requires root/SuperUser rights.
